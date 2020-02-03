@@ -10,6 +10,7 @@ import pickle
 import os
 import numpy as np
 import time
+from termcolor import colored
 
 # disables the warning, doesn't enable AVX/FMA
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -42,7 +43,7 @@ for dense_layer in dense_layers:
 
 			# plot the machine learning progress of each epoch using TensorBoard
 			name = "flare-vs-good-{}".format(int(time.time()))
-			tensorboard = TensorBoard(log_dir=os.path.join(file_path, 'optimal2-log/{}'.format(name)))
+			tensorboard = TensorBoard(log_dir=os.path.join(file_path, 'optimal-log/{}'.format(name)))
 			print(name)
 
 			model = Sequential()
@@ -77,3 +78,6 @@ for dense_layer in dense_layers:
 
 # save model
 model.save(os.path.join(file_path, "flare_detection_CNN.model"))
+
+# print the training progress
+print(colored('the training has been completed', 'red'))
