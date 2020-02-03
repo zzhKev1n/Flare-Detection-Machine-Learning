@@ -78,7 +78,7 @@ for dense_layer in dense_layers:
 			model.fit(X, Y, batch_size=10, epochs=20, validation_split=0.1, callbacks=[tensorboard])
 
 # save model to json file for saving the storage space
-model_json = model.to_json
+model_json = model.to_json()
 with open(os.path.join(file_path, "flare_detection_CNN.json"), "w") as json_file:
 	json_file.write(model_json)
 model.save_weights(os.path.join(file_path, "flare_detection_CNN.h5"))
