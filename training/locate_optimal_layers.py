@@ -12,6 +12,9 @@ import time
 # disables the warning, doesn't enable AVX/FMA
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
+# locate the file path for pickle loading and TensorBoard output
+file_path = os.path.dirname(os.path.realpath(__file__))
+
 # set up the gpu options
 gpu_options = tf.compat.v1.GPUOptions(per_process_gpu_memory_fraction=0.333)
 sess = tf.compat.v1.ConfigProto(gpu_options=gpu_options)
@@ -41,7 +44,7 @@ for dense_layer in dense_layers:
 
 			# label the each combination
 			name = "{}-conv-{}-nodes-{}-dense-{}time".format(conv_layer, layer_size, dense_layer, int(time.time()))
-			tensorboard = TensorBoard(log_dir='logs/{}'.format(name))
+			tensorboard = TensorBoard(log_dir=os.path.join(file_path, 'logs/{}'.format(name)))
 			print(name)
 
 			model = Sequential()
