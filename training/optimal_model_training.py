@@ -77,10 +77,13 @@ for dense_layer in dense_layers:
 
 			model.fit(X, Y, batch_size=10, epochs=20, validation_split=0.1, callbacks=[tensorboard])
 
-# save the model in json file to minimise the required storage space
-model_json = model.to_json()
-with open(os.path.join(file_path, "model.json"), "w") as json_file:
-    json_file.write(model_json)
+# save the model 
+saver = tf.compat.v1.train.Saver()
+sess = tf.compat.v1.Session()
+sess.run(tf.compat.v1.global_variables_initializer())
+saver.save(sess, os.path.join(file_path, "CNN_model"))
+
+# model.save(os.path.join(file_path, "CNN.model"))
 
 # print the training progress
 print(colored('the training has been completed', 'red'))
