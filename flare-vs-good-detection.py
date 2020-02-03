@@ -3,6 +3,7 @@ import tensorflow as tf
 import os
 import numpy as np
 from termcolor import colored
+from tensorflow.keras.models import model_from_json
 
 overall_category = ["flare", "good"]
 
@@ -40,9 +41,12 @@ for img in os.listdir(file_path):
 # reshape the image data
 X_test = np.array(loaded_resized_data).reshape(-1, img_size, img_size, 1)
 
-# load the trained model
+# load the trained model from json file
 file_path = os.path.dirname(os.path.realpath(__file__))
-model = tf.keras.models.load_model(os.path.join(file_path, "training/flare_detection_CNN.model"))
+json_file = open(os.path.join(file_path, "training/model.json"), 'r')
+loaded_json_file = json_file.read()
+json_file.close()
+model = model_from_json(loaded_json_file)
 
 # predict the loaded images 
 prediction = model.predict([X_test])
