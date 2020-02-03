@@ -6,7 +6,7 @@ import pickle
 
 # define the direction of the file
 # define the categories
-data_dir = "/Users/Kev1n/Python/Flare-Detection-Machine-Learning/training"
+data_dir = os.path.dirname(os.path.realpath(__file__))
 overall_categories = ["flare", "good"]
 
 # load the image data and resize it
@@ -38,10 +38,10 @@ for features, label in training_data:
 X = np.array(X).reshape(-1, img_size, img_size, 1)
 
 # save the X, Y data with pickle
-pickle_out = open("X.pickle", "wb")
+pickle_out = open(os.path.join(data_dir, "X1.pickle"), "wb")
 pickle.dump(X, pickle_out)
 pickle_out.close()
 
-pickle_out = open("Y.pickle", "wb")
+pickle_out = open(os.path.join(data_dir, "Y1.pickle"), "wb")
 pickle.dump(Y, pickle_out)
 pickle_out.close()
