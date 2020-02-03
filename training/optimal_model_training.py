@@ -17,17 +17,17 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 # load stored X data and process the data into tensor
 # scale down the X value for the image training
 # the maximum image pixal value is 255
-pickle_in = open("X.pickle", "rb")
+pickle_in = open(os.path.join(os.path.dirname(os.path.realpath(__file__)),"X.pickle"), "rb")
 X = pickle.load(pickle_in)
 X = X/255.0
 X = tf.convert_to_tensor(X)
 
 # load and process Y value
-pickle_in = open("Y.pickle", "rb")
+pickle_in = open(os.path.join(os.path.dirname(os.path.realpath(__file__)),"Y.pickle"), "rb")
 Y = pickle.load(pickle_in)
 Y = np.array(Y)
 
-# the optimal combination is 3 conv layers and 1 dense layer with 64 layer size
+# the optimal combination is 1 conv layers and 2 dense layer with the layer size of 128
 conv_layers = [1]
 layer_sizes = [128]
 dense_layers = [2]
@@ -39,7 +39,7 @@ for dense_layer in dense_layers:
 
 			# plot the machine learning progress of each epoch using TensorBoard
 			name = "flare-vs-good-{}".format(int(time.time()))
-			tensorboard = TensorBoard(log_dir='optimal-log/{}'.format(name))
+			tensorboard = TensorBoard(log_dir=os.path.join(os.path.dirname(os.path.realpath(__file__)), 'optimal-log/{}'.format(name)))
 			print(name)
 
 			model = Sequential()
