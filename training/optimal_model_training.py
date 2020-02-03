@@ -14,16 +14,19 @@ import time
 # disables the warning, doesn't enable AVX/FMA
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
+# locate the file path for pickle loading and TensorBoard output
+file_path = os.path.dirname(os.path.realpath(__file__))
+
 # load stored X data and process the data into tensor
 # scale down the X value for the image training
 # the maximum image pixal value is 255
-pickle_in = open(os.path.join(os.path.dirname(os.path.realpath(__file__)),"X.pickle"), "rb")
+pickle_in = open(os.path.join(file_path,"X.pickle"), "rb")
 X = pickle.load(pickle_in)
 X = X/255.0
 X = tf.convert_to_tensor(X)
 
 # load and process Y value
-pickle_in = open(os.path.join(os.path.dirname(os.path.realpath(__file__)),"Y.pickle"), "rb")
+pickle_in = open(os.path.join(file_path,"Y.pickle"), "rb")
 Y = pickle.load(pickle_in)
 Y = np.array(Y)
 
@@ -39,7 +42,7 @@ for dense_layer in dense_layers:
 
 			# plot the machine learning progress of each epoch using TensorBoard
 			name = "flare-vs-good-{}".format(int(time.time()))
-			tensorboard = TensorBoard(log_dir=os.path.join(os.path.dirname(os.path.realpath(__file__)), 'optimal-log/{}'.format(name)))
+			tensorboard = TensorBoard(log_dir=os.path.join(file_path, 'optimal2-log/{}'.format(name)))
 			print(name)
 
 			model = Sequential()
