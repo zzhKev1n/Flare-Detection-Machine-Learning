@@ -12,6 +12,8 @@ overall_category = ["flare", "good"]
 file_path = input(colored('Please type the full path of the folder which stored the image files for tests: \n', 'red'))
 
 # check if the path is valid
+# if the input path is valid, then proceeed to the image data loading process
+# if the input path is not valid, then ask again
 path_validation = False
 while path_validation != True:
 	try:
@@ -21,6 +23,7 @@ while path_validation != True:
 	except Exception:
 		file_path = input(colored('The file path does not exist, please try again. \n', 'red'))
 
+# load the images from the folder and process the data
 loaded_resized_data = []
 num_of_img = 0
 img_name = []
@@ -38,7 +41,8 @@ for img in os.listdir(file_path):
 X_test = np.array(loaded_resized_data).reshape(-1, img_size, img_size, 1)
 
 # load the trained model
-model = tf.keras.models.load_model("/Users/Kev1n/Python/Flare-Detection-Machine-Learning/training/flare_detection_CNN.model")
+file_path = os.path.dirname(os.path.realpath(__file__))
+model = tf.keras.models.load_model(os.path.join(file_path, "training/flare_detection_CNN.model"))
 
 # predict the loaded images 
 prediction = model.predict([X_test])
