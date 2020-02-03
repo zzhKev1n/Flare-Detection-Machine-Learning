@@ -22,13 +22,13 @@ sess = tf.compat.v1.ConfigProto(gpu_options=gpu_options)
 # load stored X data and process the data into tensor
 # scale down the X value for the image training
 # the maximum image pixal value is 255
-pickle_in = open("X.pickle", "rb")
+pickle_in = open(os.path.join(file_path,"X.pickle"), "rb")
 X = pickle.load(pickle_in)
 X = X/255.0
 X = tf.convert_to_tensor(X)
 
 # load and process Y value
-pickle_in = open("Y.pickle", "rb")
+pickle_in = open(os.path.join(file_path,"Y.pickle"), "rb")
 Y = pickle.load(pickle_in)
 Y = np.array(Y)
 
