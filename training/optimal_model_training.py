@@ -77,24 +77,11 @@ for dense_layer in dense_layers:
 
 			model.fit(X, Y, batch_size=10, epochs=20, validation_split=0.1, callbacks=[tensorboard])
 
-# initialize the variables
-# init = tf.initialize_all_variables()
-
-# save all variables
-# init = tf.compat.v1.initialize_all_variables()
-# saver = tf.compat.v1.train.Saver()
-# with tf.compat.v1.Session() as sess:
-# 	sess.run(init)
-# 	save_path = saver.save(sess, os.path.join(file_path, "flare_detection_CNN/save_net.ckpt"))
-
-# sess = tf.Session()
-# sess.run(tf.global_variables_initializer())
-# saver.save(sess, os.path.join(file_path, "flare_detection_CNN.model"))
-
+# save the model in json file to minimise the required storage space
 model_json = model.to_json()
 with open(os.path.join(file_path, "model.json"), "w") as json_file:
     json_file.write(model_json)
-# model.save(os.path.join(file_path, "flare_detection_CNN.model"))
+
 
 # print the training progress
 print(colored('the training has been completed', 'red'))
