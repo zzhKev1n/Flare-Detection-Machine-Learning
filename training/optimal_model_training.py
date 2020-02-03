@@ -6,6 +6,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten, Conv2D, MaxPooling2D
 from tensorflow.keras.callbacks import TensorBoard
+from tensorflow.keras.models import model_from_json
 import pickle
 import os
 import numpy as np
@@ -76,8 +77,12 @@ for dense_layer in dense_layers:
 
 			model.fit(X, Y, batch_size=10, epochs=20, validation_split=0.1, callbacks=[tensorboard])
 
-# save model
-model.save(os.path.join(file_path, "flare_detection_CNN.model"))
+# save model to json file for saving the storage space
+model_json = model.to_json
+with open(os.path.join(file_path, "flare_detection_CNN.json"), "w") as json_file:
+	json_file.write(model_json)
+model.save_weights(os.path.join(file_path, "flare_detection_CNN.h5"))
+# model.save(os.path.join(file_path, "flare_detection_CNN.model"))
 
 # print the training progress
 print(colored('the training has been completed', 'red'))
