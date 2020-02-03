@@ -44,7 +44,7 @@ for dense_layer in dense_layers:
 
 			# plot the machine learning progress of each epoch using TensorBoard
 			name = "flare-vs-good-{}".format(int(time.time()))
-			tensorboard = TensorBoard(log_dir=os.path.join(file_path, '../../optimal-log/{}'.format(name)))
+			tensorboard = TensorBoard(log_dir=os.path.join(file_path, 'optimal-log/{}'.format(name)))
 			print(name)
 
 			model = Sequential()
@@ -78,7 +78,7 @@ for dense_layer in dense_layers:
 			model.fit(X, Y, batch_size=10, epochs=20, validation_split=0.1, callbacks=[tensorboard])
 
 # save the model 
-model.save(os.path.join(file_path, "../../CNN.model"))
+model.save(os.path.join(file_path, "CNN.model"))
 
 # print the training progress
 print(colored('the training has been completed', 'red'))
