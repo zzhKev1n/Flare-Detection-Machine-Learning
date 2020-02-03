@@ -82,6 +82,5 @@ model_json = model.to_json()
 with open(os.path.join(file_path, "model.json"), "w") as json_file:
     json_file.write(model_json)
 
-
 # print the training progress
 print(colored('the training has been completed', 'red'))
