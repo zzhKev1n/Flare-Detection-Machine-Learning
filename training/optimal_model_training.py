@@ -76,4 +76,4 @@ for dense_layer in dense_layers:
 			model.fit(X, Y, batch_size=10, epochs=20, validation_split=0.1, callbacks=[tensorboard])
 
 # save model
-model.save('/Users/Kev1n/Python/Flare-Detection-Machine-Learning/flare_detection_CNN.model')
+model.save(os.path.join(file_path, "flare_detection_CNN.model"))
