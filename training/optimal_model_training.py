@@ -75,7 +75,7 @@ for dense_layer in dense_layers:
 						  optimizer='adam',
 						  metrics=['accuracy'])
 
-			model.fit(X, Y, batch_size=10, epochs=25, validation_split=0.1, callbacks=[tensorboard])
+			model.fit(X, Y, batch_size=10, epochs=20, validation_split=0.1, callbacks=[tensorboard])
 
 # save the model 
 model.save(os.path.join(file_path, "CNN.model"))
