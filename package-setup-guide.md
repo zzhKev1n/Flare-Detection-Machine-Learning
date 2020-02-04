@@ -9,7 +9,7 @@ First of all, make sure the PIP tool has been installed.
 
 Update the PIP tool to the latest version:
 
-    pip3 install --upgrade pip
+        pip3 install --upgrade pip
 
 Then make sure the GIT package is installed for cloning the project. 
     The GIT tool can be installed with the command:
@@ -18,12 +18,12 @@ Then make sure the GIT package is installed for cloning the project.
 
 Install opencv tool with the following command in terminal:
 
-    pip3 install opencv-python
+        pip3 install opencv-python
 
 Upgrade setuptools package:
 
-    pip3 install --upgrade setuptools
+        pip3 install --upgrade setuptools
 
 Install the TensorFlow package:
 
-    pip3 install tensorflow
+        pip3 install tensorflow
