@@ -19,5 +19,3 @@ The results on Tensorboard shows that the optimal combination is:
 Therefore, the model training with the optimal combination is executed under the 'optimal_model_training.py' script under the 'training' folder. The model will be saved after the training of this script.
 
 Finally, the classifier script named 'detector.py' is able to load the trained model and classify whether the image is flare or good. If you want to use this classifier, please put all of testing photos in one folder. Then run the classifier script and then it will require you to input the full directory to the folder where contains all the testing images. Finally, it will return the results on your screen.
-
-** Use Instruction **
