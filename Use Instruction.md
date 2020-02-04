@@ -4,7 +4,7 @@
 
 3. Run the ‘optimal_model_training.py’ with python 3 (this file is under the ‘training’ folder). The model will be trained and stored under the ‘training’ folder
 
-4. Place all the testing image in one folder
+4. Place all the testing image in one isolated folder
 
 5. Run the ‘detector.py’ file with python 3 under the cloned folder. Then a text saying will be printed on the screen saying: 
 
