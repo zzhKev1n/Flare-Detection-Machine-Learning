@@ -5,10 +5,13 @@ The program is trained under the tensorflow keras package and the training sampl
 The data of the images from both category is loaded and processed with the 'data_loading.py' script under the 'training' folder and then the image data with its labels are saved separately as X.pickle (processed image data for training) and Y.pickle (category labels for image data). The processed data is saved as separate files so that the image data does not need to process again in the further training process.
 
 Then the script named 'locate_optimal_layers.py' under the 'training' folder loads the saved data and then train the model with different combinations between convolutional layers, dense layers and size of the layers. the results are recorded with TensorBoard and 27 combinations are tested:
+
     conv_layers = [1, 2, 3]
     layer_sizes = [32, 64, 128]
     dense_layers = [0, 1, 2]    
+    
 The results on Tensorboard shows that the optimal combination is:
+
     conv_layers = [1]
     layer_sizes = [128]
     dense_layers = [2]
